@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.ls.prc.web.screens.seduta">
+    <data>
+        <instance id="sedutaDc"
+                  class="com.ls.prc.entity.Seduta"
+                  view="seduta-view">
+            <loader/>
+        </instance>
+        <collection id="clientesDc" class="com.ls.prc.entity.Clienti" view="_minimal">
+            <loader id="clientesLc">
+                <query>
+                    <![CDATA[select e from prc_Clienti e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="serviziFragment" spacing="true" margin="true">
+        <form id="form" dataContainer="sedutaDc">
+            <column width="250px">
+                <lookupPickerField id="clienteField" optionsContainer="clientesDc" property="cliente"/>
+                <textField id="numeroField" property="numero"/>
+                <textField id="sediaField" property="sedia"/>
+                <dateField id="dataSedutaField" property="dataSeduta"/>
+                <lookupField id="statoField" property="stato"/>
+            </column>
+        </form>
+        <fragment id="serviziFragment" screen="prc_SedutaServiziFragment"/>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommit"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

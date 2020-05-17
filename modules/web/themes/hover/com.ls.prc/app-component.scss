@@ -1,0 +1,5 @@
+@import "hover-ext";
+
+@mixin com_ls_prc {
+  @include com_ls_prc-hover-ext;
+}

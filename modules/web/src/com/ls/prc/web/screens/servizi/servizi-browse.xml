@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="servizisTable"
+        messagesPack="com.ls.prc.web.screens.servizi">
+    <data readOnly="true">
+        <collection id="servizisDc"
+                    class="com.ls.prc.entity.Servizi"
+                    view="servizi-view">
+            <loader id="servizisDl">
+                <query>
+                    <![CDATA[select e from prc_Servizi e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="servizisTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="servizisTable"
+                dataLoader="servizisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="servizisTable"
+                    width="100%"
+                    dataContainer="servizisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="descrizione"/>
+                <column id="prezzo"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="servizisTable.create"/>
+                <button id="editBtn" action="servizisTable.edit"/>
+                <button id="removeBtn" action="servizisTable.remove"/>
+                <button id="excelBtn" action="servizisTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

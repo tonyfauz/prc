@@ -1,0 +1,11 @@
+@import "hover-defaults";
+@import "com.ls.prc/hover-ext-defaults";
+@import "app-components";
+@import "com.ls.prc/hover-ext";
+
+.hover {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_ls_prc-hover-ext;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.ls.prc.web.screens.appuntamenti">
+    <data>
+        <instance id="appuntamentiDc"
+                  class="com.ls.prc.entity.Appuntamenti"
+                  view="appuntamenti-view">
+            <loader/>
+        </instance>
+        <collection id="clientesDc" class="com.ls.prc.entity.Clienti" view="clienti-view">
+            <loader id="clientesLc">
+                <query>
+                    <![CDATA[select e from prc_Clienti e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="operatoresDc" class="com.ls.prc.entity.Operatori" view="_local">
+            <loader id="operatoresLc">
+                <query>
+                    <![CDATA[select e from prc_Operatori e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="appuntamentiDc">
+            <column width="250px">
+                <lookupField id="clienteField" optionsContainer="clientesDc" property="cliente" />
+                <dateField id="dataEOraField" property="dataEOra"/>
+                <lookupField id="operatoreField" optionsContainer="operatoresDc" property="operatore"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

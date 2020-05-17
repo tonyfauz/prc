@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.ls.prc.web.screens.operatori">
+    <data>
+        <instance id="operatoriDc"
+                  class="com.ls.prc.entity.Operatori"
+                  view="operatori-view">
+            <loader/>
+        </instance>
+        <collection id="utentesDc" class="com.haulmont.cuba.security.entity.User" view="_minimal">
+            <loader id="utentesLc">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="operatoriDc">
+            <column width="250px">
+                <lookupPickerField id="utenteField" optionsContainer="utentesDc" property="utente"/>
+                <textField id="nomeField" property="nome"/>
+                <textField id="cognomeField" property="cognome"/>
+                <lookupField id="ruoloField" property="ruolo" optionsEnum="com.ls.prc.entity.RuoloOperatore"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,1 @@
+drop table if exists PRC_BASE_COMUNI__U55224 cascade ;

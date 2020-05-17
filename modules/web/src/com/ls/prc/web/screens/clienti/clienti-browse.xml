@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="clientisTable"
+        messagesPack="com.ls.prc.web.screens.clienti">
+    <data readOnly="true">
+        <collection id="clientisDc"
+                    class="com.ls.prc.entity.Clienti"
+                    view="clienti-view">
+            <loader id="clientisDl">
+                <query>
+                    <![CDATA[select e from prc_Clienti e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clientisTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clientisTable"
+                dataLoader="clientisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clientisTable"
+                    width="100%"
+                    dataContainer="clientisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="nome"/>
+                <column id="cognome"/>
+                <column id="indirizzo"/>
+                <column id="comune"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="clientisTable.create"/>
+                <button id="editBtn" action="clientisTable.edit"/>
+                <button id="removeBtn" action="clientisTable.remove"/>
+                <button id="excelBtn" action="clientisTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

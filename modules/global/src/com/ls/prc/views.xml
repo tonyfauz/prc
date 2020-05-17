@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="prc_Appuntamenti" name="appuntamenti-view" extends="_local">
+        <property name="cliente" view="_local">
+            <property name="comune" view="_minimal">
+                <property name="descrizione"/>
+                <property name="provincia"/>
+            </property>
+        </property>
+        <property name="operatore" fetch="AUTO" view="_local">
+            <property name="utente" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="prc_Seduta" name="seduta-view" extends="_local">
+        <property name="cliente" view="_minimal">
+            <property name="nome"/>
+            <property name="cognome"/>
+            <property name="indirizzo"/>
+            <property name="comune" view="_minimal"/>
+        </property>
+        <property name="servizi" view="_minimal">
+            <property name="servizio" view="_minimal">
+                <property name="descrizione"/>
+                <property name="prezzo"/>
+            </property>
+            <property name="operatore" view="_minimal">
+                <property name="nome"/>
+                <property name="cognome"/>
+            </property>
+        </property>
+    </view>
+    <view entity="prc_Clienti" name="clienti-view" extends="_local">
+        <property name="comune" view="_minimal">
+            <property name="cap"/>
+        </property>
+    </view>
+    <view entity="prc_Servizi" name="servizi-view" extends="_local"/>
+    <view entity="prc_Operatori" name="operatori-view" extends="_local">
+        <property name="utente" view="_minimal"/>
+    </view>
+    <view entity="prc_SedutaServizi" name="sedutaServizi-view" extends="_local">
+        <property name="seduta" view="_minimal">
+            <property name="cliente" view="_minimal"/>
+            <property name="numero"/>
+            <property name="sedia"/>
+        </property>
+        <property name="servizio" view="servizi-view"/>
+        <property name="operatore" view="_minimal"/>
+    </view>
+</views>

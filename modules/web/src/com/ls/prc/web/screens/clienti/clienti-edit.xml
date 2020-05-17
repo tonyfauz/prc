@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.ls.prc.web.screens.clienti">
+    <data>
+        <instance id="clientiDc"
+                  class="com.ls.prc.entity.Clienti"
+                  view="clienti-view">
+            <loader/>
+        </instance>
+        <collection id="comunesDc" class="com.ls.prc.entity.BaseComuni" view="_minimal">
+            <loader id="comunesLc">
+                <query>
+                    <![CDATA[select e from pcbb_BaseComuni e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="clientiDc">
+            <column width="250px">
+                <textField id="nomeField" property="nome"/>
+                <textField id="cognomeField" property="cognome"/>
+                <textField id="indirizzoField" property="indirizzo"/>
+                <lookupField id="comuneField" optionsContainer="comunesDc" property="comune"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,2 @@
+alter table PRC_SEDUTA_SERVIZI_LINK add constraint FK_SEDSER_ON_SERVIZI foreign key (SERVIZI_ID) references PRC_SERVIZI(ID);
+alter table PRC_SEDUTA_SERVIZI_LINK add constraint FK_SEDSER_ON_SEDUTA foreign key (SEDUTA_ID) references PRC_SEDUTA(ID);

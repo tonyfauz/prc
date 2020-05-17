@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.ls.prc.web.screens.sedutaservizi">
+    <data>
+        <instance id="sedutaServiziDc"
+                  class="com.ls.prc.entity.SedutaServizi"
+                  view="sedutaServizi-view">
+            <loader/>
+        </instance>
+        <collection id="sedutasDc" class="com.ls.prc.entity.Seduta" view="_minimal">
+            <loader id="sedutasLc">
+                <query>
+                    <![CDATA[select e from prc_Seduta e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="serviziosDc" class="com.ls.prc.entity.Servizi" view="_minimal">
+            <loader id="serviziosLc">
+                <query>
+                    <![CDATA[select e from prc_Servizi e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="operatoresDc" class="com.ls.prc.entity.Operatori" view="_minimal">
+            <loader id="operatoresLc">
+                <query>
+                    <![CDATA[select e from prc_Operatori e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <hbox spacing="true">
+            <label value="Operatore:"/>
+            <label id="lbOperatore" dataContainer="sedutaServiziDc" property="operatore"/>
+        </hbox>
+        <form id="form" dataContainer="sedutaServiziDc">
+            <column width="250px">
+                <lookupPickerField id="servizioField" optionsContainer="serviziosDc" property="servizio"/>
+                <textArea id="noteField" property="note" rows="5"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

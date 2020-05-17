@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gui="http://schemas.haulmont.com/cuba/spring/cuba-gui.xsd">
+
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="com.ls.prc"/>
+    
+    <gui:screens base-packages="com.ls.prc.web"/>
+    <bean id="prc_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="prc_AppuntamentiService" value="com.ls.prc.service.AppuntamentiService"/>
+                <entry key="prc_ServiziService" value="com.ls.prc.service.ServiziService"/>
+                <entry key="prc_CommonService" value="com.ls.prc.service.CommonService"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>

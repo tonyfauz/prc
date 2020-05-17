@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-prc" insertBefore="administration">
+        <item screen="prc_Clienti.browse"/>
+        <item screen="prc_Appuntamenti.browse" openType="NEW_TAB"/>
+        <item screen="prc_Operatori.browse"/>
+        <item screen="prc_Servizi.browse"/>
+        <item screen="prc_Seduta.browse"/>
+    </menu>
+</menu-config>

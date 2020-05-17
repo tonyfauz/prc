@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <data>
+        <collection id="sedutaServizisDc" class="com.ls.prc.entity.SedutaServizi" view="sedutaServizi-view">
+            <loader id="sedutaServizisDl">
+                <query>
+                    <![CDATA[select e from prc_SedutaServizi e where e.seduta = :seduta]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="sedutaServizisTable">
+        <groupTable id="sedutaServizisTable" height="100px" dataContainer="sedutaServizisDc" width="100%">
+            <actions>
+                <action id="create" type="create"></action>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <buttonsPanel alwaysVisible="true">
+                <button id="sedutaServizisTableCreateBtn" action="sedutaServizisTable.create"/>
+                <button id="sedutaServizisTableEditBtn" action="sedutaServizisTable.edit"/>
+                <button id="sedutaServizisTableRemoveBtn" action="sedutaServizisTable.remove"/>
+            </buttonsPanel>
+            <columns>
+                <column id="note"/>
+                <column id="seduta.numero" />
+                <column id="servizio"/>
+                <column id="operatore"/>
+            </columns>
+        </groupTable>
+    </layout>
+</fragment>
+
